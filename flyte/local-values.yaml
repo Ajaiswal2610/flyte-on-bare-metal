@@ -38,6 +38,44 @@ configuration:
       cache:
         max_size_mbs: 100
         target_gc_percent: 100
-
+        
+  waitForDB:
+    # image Configure image to use for wait-for-db init container
+    image:
+      # repository Init container image repository
+      repository: postgres
+      # tag Init container image tag
+      tag: 15-alpine
+      # pullPolicy Init container image pull policy
+      pullPolicy: IfNotPresent
+    # command Override default init container command
+    command: []
+    # args Override default init container args
+    args: []
+  # genAdminAuthSecret Configure init container to generate secrets for internal use
+  genAdminAuthSecret:
+    # command Override default init container command
+    command: []
+    # args Override default init container args
+    args: []
+  # labels Add labels to Flyte deployment
+  labels: {}
+  # annotations Add annotations to Flyte deployment
+  annotations: {}
+  # labels Add labels to Flyte pod
+  podLabels: {}
+  # annotations Add annotations to Flyte pod
+  podAnnotations: {}
+  # extraVolumeMounts Specify additional volumeMounts for Flyte container
+  extraVolumeMounts: []
+  # extraVolume Specify additional volumes for Flyte pod
+  extraVolumes: []
+  # sidecars Specify additional containers for Flyte pod
+  sidecars: []
+  # initContainers Specify additional init containers for Flyte pod
+  initContainers: []
+  # extraPodSpec Specify additional configuration for Flyte pod
+  # This can be used for adding affinity, tolerations, hostNetwork, etc.
+  extraPodSpec: {}
 serviceAccount:
   create: true
